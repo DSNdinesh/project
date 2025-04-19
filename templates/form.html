@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>update page</title>
+    </head>
+    <body>
+    <table>
+        
+        {% for d in db1 %}
+        <h1>You Edit This Id:{{d[0]}}</h1>
+        <form action ="/updateRecord" method="POST">
+        <input type="hidden" name="udid" id="udid" value={{d[0]}}>
+        <tr>
+           <td><label>Enter your name:</label></td>
+           <td><input type="text" name="sname" id="name" value={{d[1]}} required></td>
+        </tr>
+        <tr>
+        <td><label>Enter your Phone_Number:</label></td>
+        <td><input type="number" name="sphone_number" id="sphone_number" value={{d[2]}} required></td>
+        <tr>
+        <td><label>Enter your City:</label></td>
+        <td><input type="text" name="scity" id="city" value={{d[3]}} required></td>
+        </tr>
+        </table>
+        <button type="submit">update record</button>
+        </form>
+        {% endfor %} 
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>home</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>City</th>
+            </tr>
+           
+                {% for udb in db %}
+                <tr>
+                <td>{{udb[0]}}</td>   
+                <td>{{udb[1]}}</td> 
+                <td>{{udb[2]}}</td>
+                <td>{{udb[3]}}</td>
+                <td>
+                <form action="/deleteRecord" method="post">
+                    <input type="hidden" name="id" id="del" value={{udb[0]}}>
+                    <button type="submit">Delete</button>
+                </form>
+                <form action="/update" method="post">
+                    <input type="hidden" name="udid" id="udid" value={{udb[0]}}>
+                    <button type="submit">Update</button>
+                </form>
+                <form action="/profile_record" method="post">
+                    <input type="hidden" name="udid" id="udid" value={{udb[0]}}>
+                    <button type="submit">View</button>
+                </form>
+                </td>
+               
+                </tr>
+                {% endfor %} 
+        </table>
+         </ul>
+    </body>
+</html>
+

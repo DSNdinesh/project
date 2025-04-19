@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>home</title>
+    </head>
+    <body>
+        <h1>hello1</h1>
+        
+           
+            <form action ="{{url_for('form')}}" method="POST">
+        <table>
+                <tr>
+                <td><label>Enter your name:</label></td>
+                <td><input type="text" name="sname" id="name"required><br></td>
+                </tr>
+                <tr>
+                <td><label>Enter your Phone_Number:</label></td>
+                <td><input type="number" name="sphone_number" id="sphone_number"required></td>
+                </tr>
+                <tr>
+                <td><label>Enter your City:</label></td>
+                <td><input type="text" name="scity" id="city"required></td>
+                </tr>
+            
+        </table>
+                <td><button type="submit">Add</button></td>
+            </form>
+    
+    </body>
+</html>

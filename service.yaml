@@ -1,0 +1,15 @@
+# project-loadbalancer-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: my-project
+  name: project-service
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: project
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
