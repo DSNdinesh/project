@@ -5,12 +5,13 @@ pipeline {
         DOCKER_IMAGE = "dsnkumar121/project"   
         IMAGE_TAG = "${BUILD_NUMBER}"          
         PORT = "5000"
+        K8S_DEPLOY_DIR="."
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', credentialsId: 'cbbea2b1-6cb4-441c-a333-90dbe083d501', url: 'https://github.com/DSNdinesh/app.git'
+                git branch: 'main', credentialsId: 'cbbea2b1-6cb4-441c-a333-90dbe083d501', url: 'https://github.com/DSNdinesh/project.git'
             }
         }
 
@@ -42,4 +43,25 @@ pipeline {
             echo '❌ Docker image push failed!'
         }
     }
+
+    stage('depoly k8s') {
+            steps {
+                sh '''
+                kubectl apply -f ${K8S_DEPLOY_DIR}/k8s.yaml
+                kubectl apply -f ${K8S_DEPLOY_DIR}/service.yaml
+                '''
+            }
+        }
+    }
+
+     post {
+        success {
+            echo '✅k8s deploy successfully!'
+        }
+        failure {
+            echo '❌ k8s deploy failed!'
+        }
+    }
+
+
 }
