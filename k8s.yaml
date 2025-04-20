@@ -13,12 +13,12 @@ spec:
       labels:
         app: project
     spec:
-    containers:
-      - name: nginx
-        image: dsnkumar121/project:latest
-        ports:
+      containers:                      
+        - name: nginx
+          image: dsnkumar121/project:latest
+          ports:
             - containerPort: 5000
-        env:
+          env:
             - name: DB_HOST
               value: database-1.cpa8i48eqilt.ap-south-1.rds.amazonaws.com
             - name: DB_PORT
