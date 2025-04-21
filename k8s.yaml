@@ -24,7 +24,7 @@ spec:
               value: database-1.cpa8i48eqilt.ap-south-1.rds.amazonaws.com
             - name: DB_PORT
               value: "5432"
-            - name: DB_NAME
+            - name: DATABASE
               value: stu_projects
             - name: DB_USER
               value: postgres

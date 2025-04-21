@@ -1,14 +1,15 @@
 from flask import Flask, render_template,url_for,redirect,request
-import psycopg2 #not error
+import pg8000
 
 app=Flask(__name__)
 
 
 
-conn = psycopg2.connect(
+
+conn = pg8000.connect(
             host='database-1.cpa8i48eqilt.ap-south-1.rds.amazonaws.com',
             port='5432',
-            dbname='stu_projects',
+            database='stu_projects',
             user='postgres',
             password='postgres'
         )
@@ -30,7 +31,7 @@ def form():
             name= request.form.get("sname")
             sphone_number= request.form.get("sphone_number")
             scity= request.form.get("scity")
-            cur.execute("create table std_database(sid serial primary key,sname varchar(50),sphone_number varchar(12),scity varchar(50))")
+            cur.execute("CREATE TABLE IF NOT EXISTS std_database(sid serial primary key,sname varchar(50),sphone_number varchar(12),scity varchar(50))")
             cur.execute("INSERT INTO std_database (sname, sphone_number, scity) VALUES (%s, %s, %s)", (name,sphone_number, scity))
            
             conn.commit()
