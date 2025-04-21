@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "dsnkumar121/project"
+        DOCKER_IMAGE = "dsnkumar121/project1"
         IMAGE_TAG = "${BUILD_NUMBER}"
         PORT = "5000"
         K8S_DEPLOY_DIR = "."
