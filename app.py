@@ -1,12 +1,12 @@
 from flask import Flask, render_template,url_for,redirect,request
-import pg8000
+import psycopg2
 
 app=Flask(__name__)
 
 
 
 
-conn = pg8000.connect(
+conn = psycopg2.connect(
             host='database-1.cpa8i48eqilt.ap-south-1.rds.amazonaws.com',
             port='5432',
             database='stu_projects',
