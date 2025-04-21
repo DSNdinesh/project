@@ -38,7 +38,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
-                sed "s/__BUILD_TAG__/$BUILD_TAG/g" k8s/deployment.yaml | kubectl apply -f -
+                sed "s/__BUILD_TAG__/$BUILD_TAG/g" k8s/k8s.yaml | kubectl apply -f -
                 kubectl apply -f ${K8S_DEPLOY_DIR}/k8s.yaml
                 kubectl apply -f ${K8S_DEPLOY_DIR}/service.yaml
                 '''
