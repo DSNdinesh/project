@@ -12,9 +12,10 @@ spec:
     metadata:
       labels:
         app: project
+
     spec:
-      containers:                      
-        - name: nginx
+      containers:                      # Correctly indented under template.spec
+        - name: deployment
           image: dsnkumar121/project:latest
           ports:
             - containerPort: 5000
@@ -25,7 +26,7 @@ spec:
               value: "5432"
             - name: DB_NAME
               value: stu_projects
-            - name: DB_USER
+            - name: DB_USER/
               value: postgres
             - name: DB_PASSWORD
               value: postgres

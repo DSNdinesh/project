@@ -26,8 +26,7 @@ pipeline {
 
         stage('Push Docker Image to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(
-                    credentialsId: '7064bfe2-1c4b-4a26-b340-6ca17c5ad1b9',usernameVariable: 'dockeruser',passwordVariable: 'dockerpwd')]) {
+                withCredentials([usernamePassword(credentialsId: '4105d4a7-ce26-4862-86e3-4844cbb813b4', passwordVariable: 'dockerpwd', usernameVariable: 'dockeruid')]) {
                     sh '''
                     docker login -u $dockeruser -p $dockerpwd
                     docker push $DOCKER_IMAGE:$IMAGE_TAG
@@ -39,7 +38,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
-                kubectl create namespace my-project
+                kubctl create namesapce name first
                 kubectl apply -f ${K8S_DEPLOY_DIR}/k8s.yaml
                 kubectl apply -f ${K8S_DEPLOY_DIR}/service.yaml
                 '''
