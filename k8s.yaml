@@ -16,7 +16,7 @@ spec:
     spec:
       containers:                      # Correctly indented under template.spec
         - name: deployment
-          image: dsnkumar121/project:__BUILD_TAG__
+          image: dsnkumar121/project:latest
           ports:
             - containerPort: 5000
           env:
