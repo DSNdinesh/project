@@ -1,5 +1,5 @@
 # Use official Ubuntu base image
-FROM alpine:latest
+FROM ubuntu:latest
 
 # Set environment variables to avoid prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
