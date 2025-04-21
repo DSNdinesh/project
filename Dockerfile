@@ -1,5 +1,5 @@
 # Use official Ubuntu base image
-FROM ubuntu:latest
+FROM ubuntu:22.04
 
 # Set environment variables to avoid prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
