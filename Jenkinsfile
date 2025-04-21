@@ -28,7 +28,7 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: '4105d4a7-ce26-4862-86e3-4844cbb813b4', passwordVariable: 'dockerpwd', usernameVariable: 'dockeruid')]) {
                     sh '''
-                    docker login -u $dockeruser -p $dockerpwd
+                    docker login -u $dockeruid -p $dockerpwd
                     docker push $DOCKER_IMAGE:$IMAGE_TAG
                     '''
                 }
