@@ -38,7 +38,6 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
-                kubectl rollout restrt deployment my-app -n my-project
                 kubectl apply -f ${K8S_DEPLOY_DIR}/k8s.yaml
                 kubectl apply -f ${K8S_DEPLOY_DIR}/service.yaml
                 '''
