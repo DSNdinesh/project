@@ -38,6 +38,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
+                sed -i "s|image: ${DOCKER_IMAGE}:.*|image: ${DOCKER_IMAGE}:${IMAGE_TAG}|" ${K8S_DEPLOY_DIR}/k8s.yaml
                 kubectl apply -f ${K8S_DEPLOY_DIR}/k8s.yaml
                 kubectl apply -f ${K8S_DEPLOY_DIR}/service.yaml
                 '''
